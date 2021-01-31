@@ -5,7 +5,7 @@
 #include "MatcherAutomaton.h"
 int MatcherAutomaton::Start(const std::string& input) {
     bool isMatch = true;
-    newLines = 1;
+    newLines = 0;
     inputRead = 0; // member variable inherited from Automaton class
     for (int i = 0; i < (int)toMatch.size() && isMatch; i++) {
         if (input[i] != toMatch[i]) {

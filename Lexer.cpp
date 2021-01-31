@@ -12,11 +12,24 @@ void Lexer::Run(std::string input) {
     // While there are more characters to tokenize
     while(input.size() > 0)
     {
-    maxRead = 0;
+
+        maxRead = 0;
         maxAutomaton = automata.at(0);
 
         // TODO: you need to handle whitespace in between tokens
-        if(input.at(0))
+
+        while(isspace(input.at(0)))
+        {
+            if(isspace(input.at(0)))
+            {
+                if(input.at(0) == '\n')
+                {
+                    lineNumber++;
+                }
+                input.erase(0,1);
+            }
+        }
+
 
         // Here is the "Parallel" part of the algorithm
         // Each automaton runs with the same input
@@ -37,17 +50,26 @@ void Lexer::Run(std::string input) {
         lineNumber += maxAutomaton->NewLinesRead();
         tokens.push_back(newToken);
     }
-
     // No automaton accepted input; create invalid token
     else {
-        maxRead = 1;
 
+        maxRead = 1;
         std::string firstChar;
         firstChar.push_back(input.at(0));
-        Token newTok = Token(UNDEFINED, firstChar, 1);
-        newToken = &newTok;
+
+        //EOF = -1
+        if(input.at(0) == -1)
+        {
+            newToken = new Token(END, "", lineNumber);
+        }
+        //Otherwise undefined
+        else{
+            newToken = new Token(UNDEFINED, firstChar, lineNumber);
+        }
+
 
         tokens.push_back(newToken);
+
     }
         input.erase(0,maxRead);
     }

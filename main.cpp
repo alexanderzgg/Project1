@@ -1,9 +1,6 @@
 #include <iostream>
 #include "Lexer.h"
 #include <fstream>
-
-#include <cctype>
-
 int main(int argc, char* argv[]) {
     std::string filename = argv[1];
     std::string fileContents;
@@ -13,6 +10,7 @@ int main(int argc, char* argv[]) {
     {
         fileContents.push_back(inFile.get());
     }
+    fileContents.push_back(inFile.get());
 
     Lexer mainLex = Lexer();
     mainLex.Run(fileContents);
@@ -22,12 +20,6 @@ int main(int argc, char* argv[]) {
     {
         std::cout << tokenData.at(i)->ToString() << std::endl;
     }
-
-
-
-// Token testing
-//    Token newTok = Token(UNDEFINED, "Whoah", 21);
-//    std ::cout << newTok.ToString() << std::endl;
-
+    std::cout << "Total Tokens = " << tokenData.size() << std::endl;
     return 0;
 }

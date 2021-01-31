@@ -8,6 +8,9 @@
 //Converts this instance's values into a string in the output format
 std::string Token::ToString()
 {
+//    std::cout << TypeToString(this->tokenType) << std::endl;
+//    std::cout << this->tokenValue << std::endl;
+//    std::cout << this->lineNumber << std::endl;
     std::string toOutput = "(" + TypeToString(this->tokenType) + ",\"" +
             this->tokenValue + "\"" + "," +  std::to_string(this->lineNumber) + ")";
     return toOutput;
