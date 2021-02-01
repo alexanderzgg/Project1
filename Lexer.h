@@ -7,6 +7,9 @@
 #include "Token.h"
 #include "Automaton.h"
 #include "MatcherAutomaton.h"
+#include "StringAutomaton.h"
+#include "IDAutomata.h"
+#include "CommentAutomaton.h"
 #include <vector>
 #include <cctype>
 
@@ -37,7 +40,10 @@ public:
         automata.push_back(new MatcherAutomaton(STRING, "*", MULTIPLY));
         automata.push_back(new MatcherAutomaton(STRING, "+", ADD));
         automata.push_back(new MatcherAutomaton(STRING, "Schemes", SCHEMES));
-        automata.push_back(new MatcherAutomaton(STRING, "Queries", QUERIES));
+        automata.push_back(new MatcherAutomaton(STRING, "Queries", QUERIES));\
+        automata.push_back(new IDAutomaton(ID));
+        automata.push_back(new StringAutomaton(STRING));
+        automata.push_back(new CommentAutomaton(COMMENT));
 
 //automata.push_back(new ColonAutomaton());
 //automata.push_back(new ColonDashAutomaton());

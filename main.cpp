@@ -2,6 +2,11 @@
 #include "Lexer.h"
 #include <fstream>
 int main(int argc, char* argv[]) {
+    if(argc != 2)
+    {
+        std::cout << "Error, please provide only command line argument after the executable" << std::endl;
+        return 0;
+    }
     std::string filename = argv[1];
     std::string fileContents;
 
