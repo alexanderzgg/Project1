@@ -16,6 +16,11 @@ std::string Token::ToString()
     return toOutput;
 }
 
+TokenType Token::getTok()
+{
+    return tokenType;
+}
+
 //Converts the enum token type into it's corresponding string.
 std::string Token::TypeToString(TokenType type)
 {

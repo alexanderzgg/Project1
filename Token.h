@@ -20,9 +20,11 @@ public:
     }
     std::string ToString();
     std::string TypeToString(TokenType type);
+    TokenType getTok();
+    std::string tokenValue;
 
 private:
-    std::string tokenValue;
+
     int lineNumber;
     TokenType tokenType;
 };

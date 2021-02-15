@@ -67,6 +67,10 @@ void CommentAutomaton::s3(std::string input)
     }
     else
     {
+        //If we come across a new line
+        if(input.at(inputRead) == '\n') {
+            newLines ++;
+        }
         //EOF reached
         if(input.at(inputRead) == -1)
         {

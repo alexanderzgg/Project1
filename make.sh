@@ -1,0 +1,1 @@
+g++ -Wall -std=c++17 -g *.cpp -o Project1.exe

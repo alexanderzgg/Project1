@@ -48,7 +48,14 @@ void Lexer::Run(std::string input) {
     {
         newToken = maxAutomaton->CreateToken(input.substr (0,maxRead), lineNumber);
         lineNumber += maxAutomaton->NewLinesRead();
-        tokens.push_back(newToken);
+
+        //TODO
+        //For lab 2 this if statement stops comments from being pushed onto the token vector.
+        if(newToken->getTok() != COMMENT)
+        {
+            tokens.push_back(newToken);
+        }
+
     }
     // No automaton accepted input; create invalid token
     else {
